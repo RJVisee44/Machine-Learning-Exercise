@@ -9,7 +9,13 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D,Conv2DTranspose
 from keras.utils import plot_model
 
+
 def IAINet(input_shape):
+    """
+    input shape -> int:
+        Input shape of the image passed to the network    
+    """
+    
     #Create model
     model = Sequential()
     
