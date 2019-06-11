@@ -23,9 +23,11 @@ def noOverlap_extract(train_img,train_labels,n_dim):
             height/width is not divisible by n_dim.
             
     Output:
-        img_patches,lab_patches:
+        img_patches,labels:
             Total patches of train_img and corresponding train_labels with no overlap.
             Total patches = (resized_image/n_dim)^2
+            img_patches dim: (Total patches,n_dim,n_dim,3)
+            labels dim: (Total patches,n_dim*n_dim,1)
             
     """
     
@@ -54,4 +56,4 @@ def noOverlap_extract(train_img,train_labels,n_dim):
                 maxes.append(max(lab_patches[i][j][k]))
         labels.append(maxes)
         
-    return np.array(img_patches),np.array(labels)
+    return np.array(img_patches),np.array(labels)/255
