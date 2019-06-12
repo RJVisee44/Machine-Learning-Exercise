@@ -7,8 +7,6 @@ Created on Mon Jun 10 09:36:19 2019
 
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D,Conv2DTranspose,Flatten,Dense
-from keras.utils import plot_model
-
 
 def IAINet(input_shape):
     """
@@ -29,7 +27,5 @@ def IAINet(input_shape):
     #Need fully connected layer for output 
     model.add(Flatten())
     model.add(Dense(input_shape[0]*input_shape[0], input_shape=(input_shape[0], ), activation='sigmoid'))
-    
-    #plot_model(model, to_file='model.png')
 
     return model
