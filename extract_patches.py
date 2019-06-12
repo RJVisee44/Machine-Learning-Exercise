@@ -11,7 +11,7 @@ from sklearn.feature_extraction import image
 
 
 
-def noOverlap_extract(train_img,train_labels,n_dim):
+def extract_patches(train_img,train_labels,n_dim):
     """
     This function takes train_img and train_labels and splits it into n number 
     of image patches. There exists no overlap between patches. 
@@ -50,10 +50,7 @@ def noOverlap_extract(train_img,train_labels,n_dim):
             
     labels = []
     for i in range(len(lab_patches)):
-        maxes = []
-        for j in range(n_dim):
-            for k in range(n_dim):
-                maxes.append(max(lab_patches[i][j][k]))
-        labels.append(maxes)
+        l = lab_patches[i].reshape(n_dim*n_dim,3)
+        labels.append(l[:,1])
         
     return np.array(img_patches),np.array(labels)/255
