@@ -12,14 +12,14 @@ from keras.utils import plot_model
 
 def IAINet(input_shape):
     """
-    input shape -> int:
+    input shape -> int: (width,height,3)
         Input shape of the image passed to the network    
     """
     
     #Create model
     model = Sequential()
     
-    model.add(Conv2D(16,(3,3),input_shape=input_shape))
+    model.add(Conv2D(16,(3,3),input_shape=input_shape,activation="relu"))
     model.add(Conv2D(16,(5,5),activation="relu"))
     model.add(MaxPooling2D())
     model.add(Conv2D(32,(3,3),activation="relu"))
@@ -28,8 +28,8 @@ def IAINet(input_shape):
     
     #Need fully connected layer for output 
     model.add(Flatten())
-    model.add(Dense(input_shape[0]*input_shape[0], input_shape=(input_shape[0], ), activation='relu'))
+    model.add(Dense(input_shape[0]*input_shape[0], input_shape=(input_shape[0], ), activation='sigmoid'))
     
-    plot_model(model, to_file='model.png')
+    #plot_model(model, to_file='model.png')
 
     return model
