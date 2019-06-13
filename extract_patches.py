@@ -9,6 +9,8 @@ import cv2
 import numpy as np
 import random
 import skimage as sk
+from skimage import transform
+from skimage import util
 
 def random_rotation(train_img,train_label):
     """
