@@ -5,7 +5,7 @@ Created on Mon Jun 10 16:17:39 2019
 @author: ryan4
 """
 
-from IAINet import IAINet
+from FCN_Net import FCN_Net
 from sklearn.model_selection import KFold
 from keras.optimizers import SGD
 from keras.utils import plot_model
@@ -17,7 +17,7 @@ def train_model(train_imgs, train_labels, n_dim,valid=False):
     """    
     
     print("Setting up model...")
-    model = IAINet((n_dim,n_dim,3))
+    model = FCN_Net((n_dim,n_dim,3))
     plot_model(model, to_file='model.png')
     print(model.summary())
     
