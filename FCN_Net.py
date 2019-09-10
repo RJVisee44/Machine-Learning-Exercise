@@ -25,8 +25,10 @@ def FCN_Net(input_shape):
     model.add(Conv2D(32,(3,3),padding='same',activation="relu"))
     model.add(Conv2DTranspose(32,(2,2), strides =(2,2)))
     
+    model.add(Conv2D(16,(3,3),padding='same',activation='relu'))
+    
     #Sigmoid activation for output
-    model.add(Conv2D(16,(3,3),padding='same',activation='sigmoid'))
+    model.add(Conv2D(1,(1,1),padding='same',activation='sigmoid'))    
     model.add(Reshape((input_shape[0]*input_shape[0], -1)))
     #Note: padding can get input equal to output
     
