@@ -5,7 +5,7 @@ Created on Wed Jun 12 18:18:11 2019
 @author: ryan4
 """
 
-from IAINet import IAINet
+from FCN_Net import FCN_Net
 from keras.optimizers import SGD
 
 def prediction(test_imgs,test_labels,weights,n_dim):
@@ -22,7 +22,7 @@ def prediction(test_imgs,test_labels,weights,n_dim):
     """    
     
     print("Loading model...")
-    model = IAINet((n_dim,n_dim,3))
+    model = FCN_Net((n_dim,n_dim,3))
     print(model.summary())
     
     print("Loading weights...")
