@@ -83,7 +83,7 @@ def extract_patches(train_img,train_labels,n_dim,data_augmentation=False):
             
     labels = []
     for i in range(len(lab_patches)):
-        l = lab_patches[i].reshape(n_dim*n_dim,3)
+        l = lab_patches[i].reshape(n_dim*n_dim,3,1)
         labels.append(l[:,1]) #RGB values are all the same, need pixel-wise
         
     return np.array(img_patches),np.round(np.array(labels)/255)
