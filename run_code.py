@@ -50,9 +50,9 @@ def run_code(train_img, train_label, n_dim, weights,train=False,valid=False):
     
     return test_pred
     
-n_dim = 50
+n_dim = 250
 weights = 'Weights/weights.h5'
-test_pred = run_code('image.tif','labels.tif',n_dim,weights,train=False,valid=False)
+test_pred = run_code('image.tif','labels.tif',n_dim,weights,train=True,valid=False)
     
         
         
