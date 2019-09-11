@@ -33,18 +33,19 @@ def run_code(train_img, train_label, n_dim, weights,train=False,valid=False):
     #Reshape into image
     count = 0
     i = 0
-    step = int((((5000*5000)/(n_dim*n_dim))/n_dim)/2)
-    while i < 9990: #This can be constant for a 5000x5000x3 image
+    blocks = int(5000/n_dim)
+    #Skip to the start of every row for i
+    for i in range(0,img_pred.shape[0],blocks):
         img_hor = img_pred[i].reshape(n_dim,n_dim)
-        for j in range(i+1,i+step):
+        for j in range(i+1,i+blocks):
             img_hor = np.concatenate((img_hor,img_pred[j].reshape(n_dim,n_dim)))
         if count == 0:
             img = img_hor
             count = 1
         else:
             img = np.concatenate((img,img_hor),axis=1)
-        i += step
-    
+                
+
     img = Image.fromarray(img*255,'I')
     img.save("result.png")
     
